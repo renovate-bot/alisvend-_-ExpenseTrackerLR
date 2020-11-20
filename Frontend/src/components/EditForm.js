@@ -59,7 +59,7 @@ export default class EditForm extends React.Component {
     }
 
     submit=(e)=>{
-
+       
         this.handleSubmit(e);
         // this.props.onAddExpense();
     }

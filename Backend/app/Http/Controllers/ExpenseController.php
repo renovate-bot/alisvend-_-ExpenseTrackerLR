@@ -44,22 +44,18 @@ class ExpenseController extends Controller
 
 
         
-        $expense = App\Expense::find(1);
-        $expense->user_id = Auth::id();
-        $expense->id=$request->get('id');
-        $expense->category_id = $request->get('category_id');
-        $expense->amount = $request->get('amount');
-        $expense->date = $request->get('date');
+        // $expense = Expense::find(1);
+        // $expense->user_id = Auth::id();
+        // $expense->id=$request->get('id');
+        // $expense->category_id = $request->get('category_id');
+        // $expense->amount = $request->get('amount');
+        // $expense->date = $request->get('date');
        
-        $expense->save();
+        // $expense->save();
 
-        // $data=['user_id' => Auth::id(),
-        // 'amount' => $request->get('amount'),
-        // 'date' => $request->get('date'),
-        // 'category_id' => $request->get('category_id')];
-        // Expense::create($data);
-        //return response()->json(Expense::with('category')->find($expense->id));
-
+        Expense::where('id', $request->get('id'))
+        ->where('user_id', Auth::id())
+        ->update(['category_id' => $request->get('category_id'),'amount'=>$request->get('amount'),'date'=>$request->get('date')]);
 
 
     }
