@@ -6,7 +6,9 @@ import Categories from './components/Categories';
 import Expenses from './components/Expenses';
 import Expense from './components/Expense';
 import apiClient from './services/api';
+import EditForm from './components/EditForm';
 import axios from 'axios';
+
 const App = () => {
   const [loggedIn, setLoggedIn] = React.useState(
     sessionStorage.getItem('loggedIn') == 'true' || false
@@ -59,6 +61,9 @@ const App = () => {
           )} />
            <Route path='/expenses' render={props => (
             <Expense {...props} loggedIn={loggedIn} />
+          )} />
+           <Route path='/editExpense' render={props => (
+            <EditForm {...props} loggedIn={loggedIn} />
           )} />
         </Switch>
       </div>

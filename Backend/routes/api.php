@@ -27,3 +27,4 @@ Route::middleware('auth:sanctum')->get('/expenses', 'ExpenseController@getExpens
 Route::middleware('auth:sanctum')->post('/addExpense', 'ExpenseController@store');
 
 Route::middleware('auth:sanctum')->post('/deleteExpense', 'ExpenseController@destroy');
+Route::middleware('auth:sanctum')->post('/updateExpense', 'ExpenseController@update');
