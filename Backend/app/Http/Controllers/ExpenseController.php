@@ -13,7 +13,7 @@ class ExpenseController extends Controller
     public function getExpensesByUser()
     {
         $user = Auth::id();
-        $expenses = Expense::where('user_id', $user)->with('category')->latest()->simplePaginate(6);
+        $expenses = Expense::where('user_id', $user)->with('category')->latest()->simplePaginate(6000);
         return $expenses;
     }
     public function store(Request $request)

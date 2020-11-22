@@ -150,6 +150,8 @@ class Expense extends React.Component {
                          <td><input className="form-control" type="date" onChange={this.changeFrom}></input></td>
                          
                          <td><input className="form-control" type="date" onChange={this.changeTo}></input></td></tr></table>
+
+                         <div className="scroll">
                         <table className="table table-striped">
                             <thead className='thead-dark'>
                                 <tr>
@@ -181,7 +183,7 @@ class Expense extends React.Component {
                                             </td>
                                         </tr>);
                                 })}
-                            </tbody></table>
+                            </tbody></table></div>
                             
                         </div>
                         </td><td className="shadow p-3 mb-5 bg-white rounded" height="100%" width="40%" vertical-align="top">
