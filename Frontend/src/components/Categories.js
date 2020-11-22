@@ -1,6 +1,6 @@
 import React from 'react';
 import apiClient from '../services/api';
-import axios from 'axios';
+
 const Categories = (props) => {
     const [categories, setCategories] = React.useState([]);
     React.useEffect(() => {
@@ -20,8 +20,8 @@ const Categories = (props) => {
     if (props.loggedIn) {
         return (
             
-            <select onChange={(e)=>{props.onChangeCatId(e.target.value)}} >
-                <option>Choose a Category</option>{categoryList}
+            <select className="custom-select" onChange={(e)=>{props.onChangeCatId(e.target.value)}} >
+                <option value={0}>Choose a Category</option>{categoryList}
             </select>
         );
     }

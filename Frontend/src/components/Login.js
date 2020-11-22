@@ -18,6 +18,7 @@ const Login = (props) => {
                 email: email,
                 password: password
             }).then(response => {
+                
                 if (response.status === 204) {
                     props.login();
                     setToHome(true);
@@ -31,7 +32,10 @@ const Login = (props) => {
                 }
             });
         });
+
     }
+
+    
     if (toHome === true) {
         return <Redirect to='/expenses' />
     }

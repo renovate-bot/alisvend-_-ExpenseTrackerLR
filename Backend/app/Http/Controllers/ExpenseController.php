@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App;
 use App\Expense;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 class ExpenseController extends Controller
 {
 
     public function getExpensesByUser()
     {
         $user = Auth::id();
-        $expenses = Expense::where('user_id', $user)->orderBy('date', 'Desc')->with('category')->get();
+        $expenses = Expense::where('user_id', $user)->with('category')->latest()->simplePaginate(6);
         return $expenses;
     }
     public function store(Request $request)
@@ -66,6 +66,19 @@ class ExpenseController extends Controller
         if (auth()->user()->id != $expense->user_id)
             return response("", 401);
         $expense->delete();
-        //return response()->json("successful deletion");
+        
+    }
+
+    public function chartData()
+    {         
+       
+
+        $data = Expense::select(DB::raw('sum(expenses.amount) as total, c.name as category'))
+                    ->where('user_id',auth()->user()->id)
+                    ->join('categories as c', 'c.id', 'expenses.category_id')
+                    ->groupBy('c.id')
+                    ->get();
+
+        return response()->json($data);            
     }
 }
