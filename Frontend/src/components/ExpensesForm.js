@@ -62,7 +62,7 @@ export default class ExpensesForm extends React.Component {
         this.props.onAddExpense();
     }
     render() {
-        return ( <div className="shadow p-3 mb-5 bg-white rounded"><form  onSubmit={(e)=>{this.submit(e)}}>
+        return ( <div className="shadow p-3 mb-5 formBackground rounded " ><form  onSubmit={(e)=>{this.submit(e)}}>
             <table className="table table-striped">
                
                 <thead className='thead-dark'>

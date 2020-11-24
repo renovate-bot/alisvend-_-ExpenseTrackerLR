@@ -29,3 +29,5 @@ Route::middleware('auth:sanctum')->post('/addExpense', 'ExpenseController@store'
 Route::middleware('auth:sanctum')->post('/deleteExpense', 'ExpenseController@destroy');
 Route::middleware('auth:sanctum')->post('/updateExpense', 'ExpenseController@update');
 Route::middleware('auth:sanctum')->get('/chartData', 'ExpenseController@chartData');
+
+Route::middleware('auth:sanctum')->post('/addCategory', 'CategoryController@store');

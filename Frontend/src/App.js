@@ -5,7 +5,7 @@ import Login from './components/Login';
 import Categories from './components/Categories';
 
 import Expense from './components/Expense';
-
+import CategoryForm from './components/CategoryForm';
 import EditForm from './components/EditForm';
 import Register from './components/Register';
 import axios from 'axios';
@@ -27,11 +27,11 @@ const App = () => {
     })
   };
   const authLink = loggedIn 
-    ? <button onClick={logout} className="nav-link btn btn-link"><h4>Logout</h4></button> 
-    : <NavLink to='/login' className="nav-link"><h4>Login</h4></NavLink>;
+    ? <button onClick={logout} className="nav-link btn btn-link navSplitReg"><h4>Logout</h4></button> 
+    : <NavLink to='/login' className="nav-link navSplitLog"><h4>Login</h4></NavLink>;
     const regLink = loggedIn 
     ? <NavLink to='#' className="nav-link"></NavLink>
-    : <NavLink to='/register' className="nav-link"><h4>Register</h4></NavLink>;
+    : <NavLink to='/register' className="nav-link navSplitReg"><h4>Register</h4></NavLink>;
   return (
     <Router>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
@@ -40,6 +40,9 @@ const App = () => {
        
           <li className="nav-item">
             <NavLink to='/expenses' className="nav-link"><h4>Expenses</h4></NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to='/CategoryForm' className="nav-link"><h4>Categories</h4></NavLink>
           </li>
           <li className="nav-item">
             {authLink}
@@ -64,6 +67,9 @@ const App = () => {
           )} />
            <Route path='/expenses' render={props => (
             <Expense {...props} loggedIn={loggedIn} />
+          )} />
+          <Route path='/CategoryForm' render={props => (
+            <CategoryForm {...props} loggedIn={loggedIn} />
           )} />
            <Route path='/editExpense' render={props => (
             <EditForm {...props} loggedIn={loggedIn} />

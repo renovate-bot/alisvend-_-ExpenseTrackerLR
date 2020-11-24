@@ -12,4 +12,22 @@ class CategoryController extends Controller
 
         return $categories;
     }
+
+    public function store(Request $request)
+    {
+
+
+        
+        $category= new Category();
+        
+        
+        $category->name = $request->get('name');
+        
+       
+        $category->save();
+
+      
+
+
+    }
 }
