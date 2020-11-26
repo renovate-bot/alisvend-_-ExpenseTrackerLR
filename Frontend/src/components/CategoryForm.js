@@ -6,7 +6,7 @@ export default class CategoryForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            category:'',
+            category: '',
 
         };
 
@@ -22,7 +22,7 @@ export default class CategoryForm extends React.Component {
             .then(response => {
                 apiClient.post('/api/addCategory', {
                     name: this.state.category
-         
+
                 })
 
 
@@ -33,24 +33,25 @@ export default class CategoryForm extends React.Component {
 
     handleChangeCat = (event) => {
         this.setState({ category: event.target.value });
-        
+
     }
 
 
-    render(){
+    render() {
 
 
 
-        return(
+        return (
+            <div className="shadow p-3 mb-5 bg-gradient-light rounded ">
+                <form align="center" onSubmit={(e) => { this.handleSubmit(e) }}>
 
-    <form align="center" onSubmit={(e)=>{this.handleSubmit(e)}}>
-              
-            <input type="text" placeholder="Enter Category Name" value={this.state.value} onChange={this.handleChangeCat} />
-               
-               
-                <input className="btn btn-dark" type="submit" value="Add"  />
-            </form>
+                    <input type="text" placeholder="Enter Category Name" value={this.state.value} onChange={this.handleChangeCat} />
 
+
+                    <input className="btn btn-dark" type="submit" value="Add" />
+                </form>
+                <Categories {...this.props} loggedIn={true} />
+            </div>
         );
     }
 }

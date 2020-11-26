@@ -26,52 +26,52 @@ const App = () => {
       }
     })
   };
-  const authLink = loggedIn 
-    ? <button onClick={logout} className="nav-link btn btn-link navSplitReg"><h4>Logout</h4></button> 
+  const authLink = loggedIn
+    ? <button onClick={logout} className="nav-link btn btn-link navSplitReg"><h4>Logout</h4></button>
     : <NavLink to='/login' className="nav-link navSplitLog"><h4>Login</h4></NavLink>;
-    const regLink = loggedIn 
+  const regLink = loggedIn
     ? <NavLink to='#' className="nav-link"></NavLink>
     : <NavLink to='/register' className="nav-link navSplitReg"><h4>Register</h4></NavLink>;
   return (
     <Router>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav">
-       
-          <li className="nav-item">
-            <NavLink to='/expenses' className="nav-link"><h4>Expenses</h4></NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to='/CategoryForm' className="nav-link"><h4>Categories</h4></NavLink>
-          </li>
-          <li className="nav-item">
-            {authLink}
-          </li>
-          <li className="nav-item">
-            {regLink}
-          </li>
-        </ul>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav">
+
+            <li className="nav-item">
+              <NavLink to='/expenses' className="nav-link"><h4>Expenses</h4></NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to='/CategoryForm' className="nav-link"><h4>Categories</h4></NavLink>
+            </li>
+            <li className="nav-item">
+              {authLink}
+            </li>
+            <li className="nav-item">
+              {regLink}
+            </li>
+          </ul>
         </div>
       </nav>
       <div className=" mt-5 pt-5" >
         <Switch>
-          
+
           <Route path='/login' render={props => (
             <Login {...props} login={login} />
           )} />
-           <Route path='/register' render={props => (
+          <Route path='/register' render={props => (
             <Register {...props} login={login} />
           )} />
           <Route path='/categories' render={props => (
             <Categories {...props} loggedIn={loggedIn} />
           )} />
-           <Route path='/expenses' render={props => (
+          <Route path='/expenses' render={props => (
             <Expense {...props} loggedIn={loggedIn} />
           )} />
           <Route path='/CategoryForm' render={props => (
             <CategoryForm {...props} loggedIn={loggedIn} />
           )} />
-           <Route path='/editExpense' render={props => (
+          <Route path='/editExpense' render={props => (
             <EditForm {...props} loggedIn={loggedIn} />
           )} />
         </Switch>
